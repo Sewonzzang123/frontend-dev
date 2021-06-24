@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.header .logo {
+	font-size:0; 
+	text-indent:110%;
+	width:180px;
+	height:94px;
+	background:url('/ch03/images/daum-logo.png') no-repeat;
+	background-size: 180px 94px; }
+.header .search-box { border:1px solid #0089ff; border-radius: 1px;}
+.header .search_box:hover::before, 
+.header .search_box:hover::after {
+    right: 0;
+    transition-property: right;
+    transition-duration: 0.8s;
+    background: linear-gradient(to right, #86aaff, #70bc4c, #ffbe00, #f46e85);}
+
+.btn-search , .keyboard, .search-box input { display:block; }
+.search-box { float:left; }
+</style>
+</head>
+<body>
+	<div class="header">
+		<h1 class="logo">daum</h1>
+		<div class="search-box">
+			<div class="btn-search">
+				<button>돋보기</button>
+			</div>
+			<a class='keyboard' href="#">키보드</a>
+			<input type="text" />
+		</div>
+
+	</div>
+</body>
+</html>

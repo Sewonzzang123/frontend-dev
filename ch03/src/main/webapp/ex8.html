@@ -11,7 +11,10 @@ body {
 }
 
 
-ul.bullet {
+ul.bullet { z-index:10 ;
+	position:absolute;
+	top:100px;
+	left:200px;
 	list-style-type:none;
 	margin:10px 0 0 0;
 	padding:0;
@@ -45,7 +48,9 @@ ul.bullet li {
     <li> 5. 리스트의 bullet 을 백그라운드로 사용가능합니다.</li>
     <li> 6. 리스트의 bullet 을 백그라운드로 사용가능합니다.</li>
 </ul>
-
+<div style="position:absolute; left:100px; top:100px; width: 200px; height: 100px; background-color: #00f">
+박스
+</div>
 
 </body>
 </html>
