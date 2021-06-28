@@ -39,3 +39,8 @@ var o3 = {
   },
 };
 console.log(o3); // { name: '둘리', age: 10, another: { name: '마이콜', age: 30 } }
+
+/* XmlHttpRequest 호스트 객체(브라우저)를 사용해서 통신을 한다. */
+var response = '{name:"둘리",age:10, email:"dooly@gmail.com"}';
+var userVo = eval("(" + response + ")");
+console.log(userVo.name + ":" + userVo.email); //둘리:dooly@gmail.com
