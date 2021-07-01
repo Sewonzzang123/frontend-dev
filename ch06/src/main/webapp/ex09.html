@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <script>
+      window.addEventListener("load", function () {
+        const imgElement = document.createElement("img");
+
+        // (표준 + 비표준) 속석 하기 위해서 setAttribute 메소드를 사용한다.
+        imgElement.setAttribute(
+          "src",
+          "https://avatars.githubusercontent.com/u/65580168?v=4"
+        );
+        imgElement.setAttribute("style", "width = 400px");
+        imgElement.setAttribute("alt", "이미지");
+        imgElement.setAttribute("title", "이미지");
+        imgElement.setAttribute("data-no", 10);
+        setTimeout(function () {
+          document.body.appendChild(imgElement);
+        }, 3000);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>HTMLElement(Dom Tree Node)속성 조작하기 2</h1>
+  </body>
+</html>

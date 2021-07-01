@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <script>
+      window.addEventListener("load", function () {
+        const imgElement = document.createElement("img");
+        imgElement.src = "https://avatars.githubusercontent.com/u/65580168?v=4";
+        imgElement.style.width = "400px";
+        imgElement.alt = "이미지";
+        imgElement.title = "이미지";
+        setTimeout(function () {
+          document.body.appendChild(imgElement);
+        }, 3000);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>HTMLElement(Dom Tree Node)속성 조작하기 1</h1>
+  </body>
+</html>
