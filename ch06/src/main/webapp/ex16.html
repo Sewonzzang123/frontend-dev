@@ -1,28 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Page Title</title>
-    <script>
-      /*
-        Event Propagation(Event Bubbling)
-        특정 엘리먼트에서 이벤트(마우스)가 발생했을 때,
-        그 이벤트가 상위(또는 하위) 엘리먼트로 전달(전파)되어 가는 것
-        
-        <= IE8 : outer-div > inner-div > header > text //밑에서부터 퍼짐
-        ** standard others : text > header > inner-div > outer-div
-        
-        */
-    </script>
-  </head>
-  <body>
-    <h1>DOM Event 처리 - Event Bubbling</h1>
-    <div id="outer-div">
-      <div id="inner-div">
-        <h1 id="header">
-          <span id="text">text</span>
-        </h1>
-      </div>
-    </div>
-  </body>
+<head>
+<meta charset="utf-8" />
+<title>Page Title</title>
+<script>
+	/*
+	  Event Propagation(Event Bubbling)
+	  특정 엘리먼트에서 이벤트(마우스)가 발생했을 때,
+	  그 이벤트가 상위(또는 하위) 엘리먼트로 전달(전파)되어 가는 것
+	  
+	  <= IE8 : outer-div > inner-div > header > text //밑에서부터 퍼짐
+	 *중요* standard others : text > header > inner-div > outer-div
+	  
+	 */
+	window.addEventListener("load", function() {
+		document.getElementById("outer-div").addEventListener("click",
+				function() {
+					console.log("outer-div");
+				});
+		document.getElementById("inner-div").addEventListener("click",
+				function(e) {
+					// <= IE8 (function(e))에서 e가없음 > window.event 전역객체
+					const event = e || window.event; /* <= IE8 */
+
+					// prevent event's propagation
+					event.cancelBubble = true; //<= IE8
+					event.stopPropagation && event.stopPropagation(); //standard others
+
+					//outer까지 안가게 된다.
+					console.log("inner-div");
+				});
+		document.getElementById("header").addEventListener("click", function() {
+			console.log("header");
+		});
+		document.getElementById("text").addEventListener("click", function(e) {
+			e.stopPropagation();
+			console.log("text");
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>DOM Event 처리 - Event Bubbling</h1>
+	<div id="outer-div">
+		<div id="inner-div" style="background-color: #f00">
+			<h1 id="header">
+				<span id="text">text</span>
+			</h1>
+		</div>
+	</div>
+</body>
 </html>
