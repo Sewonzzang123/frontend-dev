@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8" />
+  <head>
+    <script src="./jquery/jquery-3.6.0.js"></script>
+    <script>
+      $(function () {
+        setTimeout(function () {
+          $(".blue").css("color", "#00f");
+          $(".red").css("color", "#f00");
+        }, 2000);
+      });
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li class="blue">
+        <strong> 텍스트 </strong> 텍스트 텍스트 텍스트 텍스트
+      </li>
+      <li class="red"><em> 텍스트 </em> 텍스트 텍스트 텍스트 텍스트</li>
+      <li class="blue"><span> 텍스트 </span> 텍스트 텍스트 텍스트 텍스트</li>
+      <li class="red">텍스트텍스트텍스트텍스트</li>
+    </ul>
+  </body>
+</html>

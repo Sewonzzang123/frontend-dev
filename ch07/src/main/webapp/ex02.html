@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <script src="./jquery/jquery-3.6.0.js"></script>
+    <script>
+      // jQuery는 DOM의 엘리먼트를 선택하는 방법을 보통 먼저 하기 때문에
+      // DOM이 로딩된 이후에 선택작업을 하여야 한다.
+
+      // 1. DOM이 로딩된 시점 : DOM API를 사용
+      window.addEventListener("load", function () {
+        const $obj1 = $("#header");
+        // 절대 jQuery 객체는 null이 될 수 없다. if($obj1 == null) => X
+        if ($obj1.length > 0) {
+          console.log("성공!");
+        }
+      });
+
+      // 2. DOM이 로딩된 시점 : jQeury 함수를 사용하는 방법1
+      //   $(document).ready(function () {
+      //     const $obj1 = $("#header");
+      //     if ($obj1.length > 0) {
+      //       console.log("성공!");
+      //     }
+      //   });
+
+      // 3. DOM이 로딩된 시점 : jQuery 함수를 사용하는 방법2
+      // 추천
+      // entry point(시작점) 함수를 jQuery함수의 Argument로 전달하는 방법
+      $(function () {
+        const $obj = $("#header");
+        if ($obj.length > 0) {
+          console.log("성공!!");
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h1 id="header">jQuery 함수로 HTMLElement를 선택해야 하는 시점</h1>
+  </body>
+</html>
