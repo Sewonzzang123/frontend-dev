@@ -14,18 +14,63 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     ></script>
     <script>
       $(function () {
-        const vo = {};
         $("#create").click(function () {
-          console.log("post!");
+          const vo = {
+            name: "둘리",
+            password: "1234",
+            email: "dooly@gmail.com",
+            gender: "male",
+          };
+          $.ajax({
+            url: "${pageContext.request.contextPath }/api/user",
+            dataType: "json",
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify(vo),
+            success: function (response) {
+              console.log(response);
+            },
+          });
         });
         $("#read").click(function () {
-          console.log("get!");
+          $.ajax({
+            url: "${pageContext.request.contextPath }/api/user/10", // 10 번 유저를 보여달라
+            dataType: "json",
+            type: "get", //read > get
+            contentType: "application/json",
+            success: function (response) {
+              console.log(response);
+            },
+          });
         });
         $("#update").click(function () {
-          console.log("put!");
+          const vo = {
+            name: "둘리",
+            password: "1234",
+            email: "dooly123@gmail.com",
+            gender: "female",
+          };
+          $.ajax({
+            url: "${pageContext.request.contextPath }/api/user/10",
+            dataType: "json",
+            type: "put",
+            contentType: "application/json",
+            data: JSON.stringify(vo),
+            success: function (response) {
+              console.log(response);
+            },
+          });
         });
         $("#delete").click(function () {
-          console.log("delete!");
+          $.ajax({
+            url: "${pageContext.request.contextPath }/api/user/10",
+            dataType: "json",
+            type: "delete",
+            data: "password=1234",
+            success: function (response) {
+              console.log(response);
+            },
+          });
         });
       });
     </script>
