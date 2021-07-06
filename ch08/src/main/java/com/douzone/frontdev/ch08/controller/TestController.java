@@ -12,4 +12,19 @@ public class TestController {
 	public String  text(){//simple http message converter
 		return "text";
 	}
+	
+	@RequestMapping("/html")
+	public String  html(){
+		return "html";
+	}
+	
+	@RequestMapping("/xml")
+	public String  xml(){
+		return "xml";
+	}
+	
+	@RequestMapping("/json01")
+	public String  json(){
+		return "json01";
+	}
 }

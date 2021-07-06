@@ -15,12 +15,12 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     <script>
     $(function() {
 		$('button').click(function(){
-			$('p').load("${pageContext.request.contextPath}/api/text");
+			$('p').load("${pageContext.request.contextPath}/api/html p");
 		})	
 	})</script>
   </head>
   <body>
-    <h1>AJAX Test - text format data</h1>
+    <h1>AJAX Test - text format message(data)</h1>
     <button>변경</button>
     <p>변경 전</p>
   </body>

@@ -15,13 +15,26 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     <script>
     $(function() {
 		$('button').click(function(){
-			$('p').load("${pageContext.request.contextPath}/api/text");
-		})	
+			$.ajax({
+				url:"${pageContext.request.contextPath }/api/json",
+				dataType:"json",
+				success: function(response){			
+					let html = "";
+					html += ("<h4>"+response.data.no+"</h4>");
+					html += ("<h5>"+response.data.name+"</h5>");
+					html += ("<p>"+response.data.message+"</p>");
+					
+					$("#data").append(html);
+				}
+			});
+		});
 	})</script>
   </head>
   <body>
-    <h1>AJAX Test - text format data</h1>
-    <button>변경</button>
-    <p>변경 전</p>
+    <h1>AJAX Test - JSON format message(data)</h1>
+    <button>데이터 가져오기</button>
+    <div id="data">
+    	
+    </div>
   </body>
 </html>
