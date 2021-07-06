@@ -24,7 +24,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           $.ajax({
             url: "${pageContext.request.contextPath }/api/user",
             dataType: "json",
-            type: "post",
+            type: "post", // create >> postMapping
             contentType: "application/json",
             data: JSON.stringify(vo),
             success: function (response) {
@@ -36,7 +36,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           $.ajax({
             url: "${pageContext.request.contextPath }/api/user/10", // 10 번 유저를 보여달라
             dataType: "json",
-            type: "get", //read > get
+            type: "get", //read > getMapping
             contentType: "application/json",
             success: function (response) {
               console.log(response);
@@ -53,7 +53,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           $.ajax({
             url: "${pageContext.request.contextPath }/api/user/10",
             dataType: "json",
-            type: "put",
+            type: "put", // update >> putMapping
             contentType: "application/json",
             data: JSON.stringify(vo),
             success: function (response) {
@@ -65,7 +65,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           $.ajax({
             url: "${pageContext.request.contextPath }/api/user/10",
             dataType: "json",
-            type: "delete",
+            type: "delete", //delete >>deleteMapping
             data: "password=1234",
             success: function (response) {
               console.log(response);
