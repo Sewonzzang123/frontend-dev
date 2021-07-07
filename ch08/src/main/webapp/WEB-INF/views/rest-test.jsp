@@ -65,7 +65,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           $.ajax({
             url: "${pageContext.request.contextPath }/api/user/10",
             dataType: "json",
-            type: "delete", //delete >>deleteMapping
+            type: "delete", //delete >> deleteMapping
             data: "password=1234",
             success: function (response) {
               console.log(response);
