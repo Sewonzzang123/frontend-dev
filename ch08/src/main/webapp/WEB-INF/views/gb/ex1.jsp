@@ -15,10 +15,13 @@
     ></script>
     <script>
     var fetch= function () {
+    		var no = $("#list-guestbook li:last-child").data("no");
+    		if(undefined == no){no=-1}
         	$.ajax({
                 url: "${pageContext.request.contextPath }/guestbook/api/list",
                 dataType: "json",  // 받을 때 포멧
                 type: "get", // 요청 메서드
+                data: "no="+no,
                 success: function (response) {
                   response.data.forEach(function(vo){
                   let html ="<li data-no='"+vo.no+"'>"+

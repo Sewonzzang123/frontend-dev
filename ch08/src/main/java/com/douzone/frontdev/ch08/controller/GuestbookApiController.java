@@ -19,7 +19,8 @@ public class GuestbookApiController {
 
 	@ResponseBody
 	@RequestMapping(value="/list")
-	public JsonResult ex1() {
+	public JsonResult ex1(@RequestParam Long no) {
+		System.out.println(no);
 		List<GuestbookVo> list = new ArrayList<>();
 		
 		GuestbookVo vo1 = new GuestbookVo();
