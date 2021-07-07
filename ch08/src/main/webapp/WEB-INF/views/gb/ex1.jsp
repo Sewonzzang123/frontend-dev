@@ -14,30 +14,36 @@
       src="${pageContext.request.contextPath }/jquery/jquery-3.6.0.js"
     ></script>
     <script>
-      $(function () {
-        $("#btn-fetch").click(function () {
-         console.log("!");
-        });
+    var fetch= function () {
+        	$.ajax({
+                url: "${pageContext.request.contextPath }/guestbook/api/list",
+                dataType: "json",  // 받을 때 포멧
+                type: "get", // 요청 메서드
+                success: function (response) {
+                  response.data.forEach(function(vo){
+                  let html ="<li data-no='"+vo.no+"'>"+
+                  				"<strong>"+vo.name+"</strong>"+
+								"<p>"+vo.message+"</p> "+
+								"<strong></strong>"+
+								" <a href='' data-no='"+vo.no+"'>삭제</a>"+
+							"</li>";
+                 
+                  $("#list-guestbook").append(html);
+                  })
+                },
+              });
+        };
+ 
+    
+    $(function(){
+    	        $("#btn-fetch").click(function () {fetch();})
+    	        fetch();
       });
     </script>
 </head>
 <body>
 	<h1>ex1</h1>
 	<ul id="list-guestbook">
-		<li data-no=""><strong>지나가다가</strong>
-			<p>
-				별루입니다.<br /> 비번:1234 -,.-
-			</p> <strong></strong> <a href="" data-no="">삭제</a></li>
-
-		<li data-no=""><strong>둘리</strong>
-			<p>
-				안녕하세요<br /> 홈페이지가 개 굿 입니다.
-			</p> <strong></strong> <a href="" data-no="">삭제</a></li>
-
-		<li data-no=""><strong>주인</strong>
-			<p>
-				아작스 방명록 입니다.<br /> 테스트~
-			</p> <strong></strong> <a href="" data-no="">삭제</a></li>
 	</ul>
 	<div>
 		<button id="btn-fetch">다음 가져오기</button>
