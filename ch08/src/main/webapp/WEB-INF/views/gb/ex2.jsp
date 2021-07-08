@@ -11,56 +11,69 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/jquery/jquery-3.6.0.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/ejs/ejs.js"></script>
 <link rel="stylesheet"
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+	/*
+	var render = function(vo, mode) {
+		let html = "<li data-no='"+vo.no+"'>" + "<strong>" + vo.name
+				+ "</strong>" + "<p>" + vo.message + "</p> "
+				+ "<strong></strong>"
+				+ " <a href='' data-no='"+vo.no+"'>삭제</a>" + "</li>";
+		//if (!mode) {
+		//	$("#list-guestbook").prepend(html);
+		//} else {
+		//	$("#list-guestbook").append(html);
+		//}
+		$("#list-guestbook")[mode ? "append" : "prepend"](html);
+	}
+	*/
+	
+	var listItemEJS = new EJS({
+		url:"${pageContext.request.contextPath }/ejs/listitem-template.ejs"
+	});
+	
+	
 	$(function() {
-		$("#add-form")
-				.submit(
-						function(event) {
-							event.preventDefault();
-							vo = {};
+		$("#add-form").submit(function(event) {
+			event.preventDefault();
+			vo = {};
 
-							vo.name = $("#input-name").val();
-							if (vo.name == "") {
-								messageBox("이름", "비어있으면 안돼요.");
-								return;
-							}
-							vo.password = $("#input-password").val();
-							if (vo.password == "") {
-								messageBox("비밀번호", "비어있으면 안돼요.");
-								return;
-							}
-							vo.message = $("#tx-content").val();
-							if (vo.message == "") {
-								messageBox("메시지", "비어있으면 안돼요.");
-								return;
-							}
+			vo.name = $("#input-name").val();
+			if (vo.name == "") {
+				messageBox("이름", "비어있으면 안돼요.");
+				return;
+			}
+			vo.password = $("#input-password").val();
+			if (vo.password == "") {
+				messageBox("비밀번호", "비어있으면 안돼요.");
+				return;
+			}
+			vo.message = $("#tx-content").val();
+			if (vo.message == "") {
+				messageBox("메시지", "비어있으면 안돼요.");
+				return;
+			}
 
-							$.ajax({
-										url : "${pageContext.request.contextPath }/api/post02",
-										dataType : "json", // 받을 때 포멧
-										type : "post", // 요청 메서드
-										// 2. JSON 포맷
-										contentType : "application/json",
-										data : JSON.stringify(vo), // post요청시 보내는 데이터
-										success : function(response) {
-											var vo = response.data;
-											let html = "<li data-no='" +vo.no + "'>"
-													+ "<strong>"
-													+ vo.name
-													+ "<p>"
-													+ vo.message
-													+ "</p> "
-													+ "<strong></strong>"
-													+ " <a href='' data-no='" +vo.no +"'>삭제</a>"
-													+ "</li>";
-
-											$("#list-guestbook").prepend(html);
-										},
-									});
-						});
+			$.ajax({
+				url : "${pageContext.request.contextPath }/api/post02",
+				dataType : "json", // 받을 때 포멧
+				type : "post", // 요청 메서드
+				// 2. JSON 포맷
+				contentType : "application/json",
+				data : JSON.stringify(vo), // post요청시 보내는 데이터
+				success : function(response) {
+					var vo = response.data;
+					//render(vo, false);
+					var html = listItemEJS.render(vo);
+					$("#list-guestbook").prepend(html);
+					
+				},
+			});
+		});
 	});
 
 	var messageBox = function(title, message) {
