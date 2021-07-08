@@ -11,21 +11,28 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/jquery/jquery-3.6.0.js"></script>
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath }/ejs/ejs.js"></script>
 <script>
-	var render = function(vo, mode) {
-		let html = "<li data-no='"+vo.no+"'>" + "<strong>" + vo.name
-				+ "</strong>" + "<p>" + vo.message + "</p> "
-				+ "<strong></strong>"
-				+ " <a href='' data-no='"+vo.no+"'>삭제</a>" + "</li>";
-		/*
-		if (!mode) {
-			$("#list-guestbook").prepend(html);
-		} else {
-			$("#list-guestbook").append(html);
-		}
-		 */
-		$("#list-guestbook")[mode ? "append" : "prepend"](html);
-	}
+/*
+var render = function(vo, mode) {
+	let html = "<li data-no='"+vo.no+"'>" + "<strong>" + vo.name
+			+ "</strong>" + "<p>" + vo.message + "</p> "
+			+ "<strong></strong>"
+			+ " <a href='' data-no='"+vo.no+"'>삭제</a>" + "</li>";
+	//if (!mode) {
+	//	$("#list-guestbook").prepend(html);
+	//} else {
+	//	$("#list-guestbook").append(html);
+	//}
+	$("#list-guestbook")[mode ? "append" : "prepend"](html);
+}
+*/
+	
+	var listEJS = new EJS({
+		url:"${pageContext.request.contextPath }/ejs/list-template.ejs"
+	});
+	
 	var fetch = function() {
 		var no = $("#list-guestbook li:last-child").data("no");
 		if (undefined == no) {
@@ -37,9 +44,11 @@
 			type : "get", // 요청 메서드
 			data : "no=" + no,
 			success : function(response) {
-				response.data.forEach(function(e) {
-					render(e, true);
-				});
+				//response.data.forEach(function(e) {
+				//	render(e, true);
+				//});
+				var html = listEJS.render(response);
+				$("#list-guestbook").append(html);
 			},
 		});
 	};
