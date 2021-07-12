@@ -1,0 +1,23 @@
+module.exports = {
+  PI: 3.14,
+  min: function () {
+    let min = Number.MAX_SAFE_INTEGER;
+    Array.from(arguments).forEach((e) => {
+      min = e < min ? e : min;
+    });
+    return min;
+  },
+  max: function () {
+    let max = Number.MIN_SAFE_INTEGER;
+    Array.from(arguments).forEach((e) => {
+      max = e > max ? e : max;
+    });
+    return max;
+  },
+};
+/**
+ * exports.PI=3.14...
+ * exports.min=...
+ * exports.max=...
+ * >>module-ex03
+ */
