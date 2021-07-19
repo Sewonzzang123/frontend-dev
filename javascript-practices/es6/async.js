@@ -62,5 +62,5 @@ const f = async function () {
 f();
 */
 
-fetch();
+fetch("http://www.sewon.com/api");
 console.log("do something");
