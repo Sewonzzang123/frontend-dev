@@ -2,7 +2,7 @@ const ex02 = function (param) {
   return new Promise(function (resolve, reject) {
     setTimeout(function () {
       if (param == "param-data") {
-        resolve(param);
+        resolve("ok");
       } else {
         reject(new Error("fail"));
       }

@@ -113,3 +113,7 @@ Strict Mode(===, !===, 객체인 경우 동일성) 로 assertion을 하여야 �
 2. notEqual(deprecteds) -> strictNotEqual -> <a href="https://github.com/Sewonzzang123/frontend-dev/blob/master/javascript-practices/testing/ex02.test02.js">ex02.test02.js</a>
 3. deepEqual(deprecteds) -> strictDeepEqual -> <a href="https://github.com/Sewonzzang123/frontend-dev/blob/master/javascript-practices/testing/ex02.test03.js">ex02.test03.js</a>
 4. notDeepEqual(deprecteds) -> notStrictDeepEqual -> <a href="https://github.com/Sewonzzang123/frontend-dev/blob/master/javascript-practices/testing/ex02.test04.js">ex02.test04.js</a>
+
+## 비동기
+
+<a href="https://github.com/Sewonzzang123/frontend-dev/tree/master/javascript-practices/async">async</a>
