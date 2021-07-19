@@ -109,7 +109,7 @@ try {
 
 Strict Mode(===, !===, 객체인 경우 동일성) 로 assertion을 하여야 한다.
 
-1. equal(deprecteds) -> strictEqual
-2. notEqual(deprecteds) -> strictNotEqual
-3. deepEqual(deprecteds) -> strictDeepEqual
-4. notDeepEqual(deprecteds) -> notStrictDeepEqual
+1. equal(deprecteds) -> strictEqual -> <a href="https://github.com/Sewonzzang123/frontend-dev/blob/master/javascript-practices/testing/ex02.test01.js">ex02.test01.js</a>
+2. notEqual(deprecteds) -> strictNotEqual -> <a href="https://github.com/Sewonzzang123/frontend-dev/blob/master/javascript-practices/testing/ex02.test02.js">ex02.test02.js</a>
+3. deepEqual(deprecteds) -> strictDeepEqual -> <a href="https://github.com/Sewonzzang123/frontend-dev/blob/master/javascript-practices/testing/ex02.test03.js">ex02.test03.js</a>
+4. notDeepEqual(deprecteds) -> notStrictDeepEqual -> <a href="https://github.com/Sewonzzang123/frontend-dev/blob/master/javascript-practices/testing/ex02.test04.js">ex02.test04.js</a>
